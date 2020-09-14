@@ -1,9 +1,9 @@
 MINER01="miner01"
 MINER02="miner02"
 MINER03=""
-varLen01=varLen=$(echo ${#MINER01})
-varLen02=varLen=$(echo ${#MINER02})
-varLen03=varLen=$(echo ${#MINER03})
+varLen01=$(echo ${#MINER01})
+varLen02=$(echo ${#MINER02})
+varLen03=$(echo ${#MINER03})
 
 # Loop starts here
 while true; do 
