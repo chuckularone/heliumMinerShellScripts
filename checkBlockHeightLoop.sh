@@ -40,17 +40,17 @@ echo " "
  
 if [ $varLen01 -gt 0 ]
 then
-    echo "Miner01 Height:\033[1m $minerHeight01\033[0m"
+    echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
 fi
 
 if [ $varLen02 -gt 0 ]
 then
-    echo "Miner02 Height:\033[1m $minerHeight02\033[0m"
+    echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
 fi
 
 if [ $varLen03 -gt 0 ]
 then
-    echo "Miner03 Height:\033[1m $minerHeight03\033[0m"
+    echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
 fi    
 echo " "
 echo "Actual  Height:\033[1m $actual\033[0m" 
@@ -61,21 +61,18 @@ echo " "
 if [ $varLen01 -gt 0 ]
 then
     testVal01=$(expr $actual - $minerHeight01)
-    echo "  \033[41m$testVal01\033[m"
     echo "MINER01, $datenow, $testVal01" >> log.out
 fi
 
 if [ $varLen02 -gt 0 ]
 then
     testVal02=$(expr $actual - $minerHeight02)
-    echo "  \033[41m$testVal02\033[m"
     echo "MINER02, $datenow, $testVal02" >> log.out
 fi
 
 if [ $varLen03 -gt 0 ]
 then
     testVal03=$(expr $actual - $minerHeight03)   
-    echo "  \033[41m$testVal03\033[m"
     echo "MINER03, $datenow, $testVal02" >> log.out
 fi
 
