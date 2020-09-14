@@ -11,21 +11,18 @@ while true; do
 # Get miner height for miner01
 if [ $varLen01 -gt 0 ]
 then
-    echo "VarLen = $varLen01"
     minerHeight01=$(docker exec $MINER01 miner info height | awk '{print $2}')
 fi
 
 # Get miner height for miner02
 if [ $varLen02 -gt 0 ]
 then
-    echo "VarLen = $varLen02"
     minerHeight02=$(docker exec $MINER02 miner info height | awk '{print $2}')
 fi
 
 # Get miner height for miner03
 if [ $varLen03 -gt 0 ]
 then
-    echo "VarLen = $varLen03"
     minerHeight03=$(docker exec $MINER03 miner info height | awk '{print $2}')
 fi
 
@@ -40,21 +37,48 @@ datenow=$(date)
 echo "\033[32m$datenow\033[m"
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= "
 echo " "
-echo "Miner01 Height:\033[1m $minerHeight01\033[0m"
-echo "Miner02 Height:\033[1m $minerHeight02\033[0m"
-echo "Miner03 Height:\033[1m $minerHeight03\033[0m"
+ 
+if [ $varLen01 -gt 0 ]
+then
+    echo "Miner01 Height:\033[1m $minerHeight01\033[0m"
+fi
+
+if [ $varLen02 -gt 0 ]
+then
+    echo "Miner02 Height:\033[1m $minerHeight02\033[0m"
+fi
+
+if [ $varLen03 -gt 0 ]
+then
+    echo "Miner03 Height:\033[1m $minerHeight03\033[0m"
+fi    
 echo " "
 echo "Actual  Height:\033[1m $actual\033[0m" 
 echo " "
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-= "
 echo " "
-testVal01=$(expr $actual - $minerHeight01)
-testVal02=$(expr $actual - $minerHeight02)
-testVal03=$(expr $actual - $minerHeight03)
-echo "  \033[41m$testVal01\033[m   \033[41m$testVal02\033[m"
-echo "MINER01, $datenow, $testVal01" >> log.out
-echo "MINER02, $datenow, $testVal02" >> log.out
-echo "MINER03, $datenow, $testVal02" >> log.out
+
+if [ $varLen01 -gt 0 ]
+then
+    testVal01=$(expr $actual - $minerHeight01)
+    echo "  \033[41m$testVal01\033[m"
+    echo "MINER01, $datenow, $testVal01" >> log.out
+fi
+
+if [ $varLen02 -gt 0 ]
+then
+    testVal02=$(expr $actual - $minerHeight02)
+    echo "  \033[41m$testVal02\033[m"
+    echo "MINER02, $datenow, $testVal02" >> log.out
+fi
+
+if [ $varLen03 -gt 0 ]
+then
+    testVal03=$(expr $actual - $minerHeight03)   
+    echo "  \033[41m$testVal03\033[m"
+    echo "MINER03, $datenow, $testVal02" >> log.out
+fi
+
 docker ps
 sleep 30
 done
