@@ -30,7 +30,7 @@ bloop=$(curl https://api.helium.io/v1/blocks/height)
 blah=$(echo $bloop | rev | cut -d":" -f1 | rev)
 actual=$(echo $blah | rev |cut -b 3- | rev)
 
-clear
+#clear
 echo " "
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= "
 datenow=$(date)
