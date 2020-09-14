@@ -32,10 +32,10 @@ actual=$(echo $blah | rev |cut -b 3- | rev)
 
 clear
 echo " "
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= "
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 datenow=$(date)
 echo "\033[32m$datenow\033[m"
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= "
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo " "
  
 if [ $varLen01 -gt 0 ]
@@ -58,7 +58,7 @@ fi
 echo " "
 echo "Actual  Height:\033[1m $actual\033[0m" 
 echo " "
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-= "
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo " "
 
 if [ $varLen01 -gt 0 ]
